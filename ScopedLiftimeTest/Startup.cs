@@ -28,10 +28,13 @@ namespace ScopedLiftimeTest
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ScopedLiftimeTest", Version = "v1" });
             });
 
+            services.AddSingleton<ISingletonInjectedService, SingletonInjectedService>();
+            services.AddSingleton<ISingletonNotInjectedService, SingletonNotInjectedService>();
             services.AddScoped<IScopedInjectedService, ScopedInjectedService>();
             services.AddScoped<IScopedNotInjectedService, ScopedNotInjectedService>();
             services.AddTransient<ITransientInjectedService, TransientInjectedService>();
             services.AddTransient<ITransientNotInjectedService, TransientNotInjectedService>();
+            services.AddTransient<IAnotherInjectedService, AnotherInjectedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
